@@ -23,7 +23,7 @@ function PokemonList() {
         console.log(response.data);
         setNextUrl(response.data.next);
         setPrevUrl(response.data.previous);
-       const pokemonResultPromise = pokemonResults.map((pokemon) => axios.get(pokemon.url));
+        const pokemonResultPromise = pokemonResults.map((pokemon) => axios.get(pokemon.url));
         const pokemonData = await axios.all(pokemonResultPromise);  
         console.log(pokemonData);
         const pokeListResult = pokemonData.map((pokeData) => {
@@ -48,7 +48,7 @@ function PokemonList() {
         <div className="pokemon-list-wrapper">
              <div className="pokemon-wrapper">
                 {(isloading)? 'Loading...': 
-                pokemonlist.map((p) => <Pokemon name={p.name} image={p.image} key={p.id} />)
+                pokemonlist.map((p) => <Pokemon name={p.name} image={p.image} key={p.id} id={p.id} />)
                }
                <div className="controls">
                 <button disabled={prevUrl == null} onClick={() => setPokedexUrl(prevUrl)}>Prev</button>
